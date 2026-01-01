@@ -5,8 +5,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody PlayerRB;
     bool isGrounded=false;
     public float jumpForce = 7f;
-    public float playerMovementSpeed = 500f;
-    public float speed=.005f;
+    public float playerMovementSpeed = 5f;
+    public float speed=5f;
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerJump();
         MovePlayerLR();
-        UpdateSpeed();
     }
 
 //Check CollisionFunction
@@ -26,16 +25,14 @@ public class PlayerMovement : MonoBehaviour
             isGrounded=true;
         }
     }
-    void UpdateSpeed()
-    {
-        speed+= .00000001f;
-    }
+    
 
     void MovePlayerLR()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(horizontal,0,speed)*playerMovementSpeed*Time.deltaTime;
-        PlayerRB.AddForce(movement, ForceMode.Force);
+        Vector3 movement = new Vector3(horizontal*playerMovementSpeed,PlayerRB.velocity.y,speed);
+        // PlayerRB.AddForce(movement, ForceMode.Force);
+        PlayerRB.velocity = movement;
     }
 
     void PlayerJump()
