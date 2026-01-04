@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     public TextMeshProUGUI displayText;
     private int score;
-    public float interval = 1f;
+    public float interval = .1f;
     void Start()
     {
         StartCoroutine(UpdateScore());
@@ -22,8 +22,7 @@ public class ScoreManager : MonoBehaviour
     IEnumerator UpdateScore()
     {   while(true){
             score++;
-            Debug.Log(score);
-        yield return new WaitForSeconds(interval);}
+        yield return new WaitForSeconds(interval/100);}
     }
 
     public void StopUpdatingScore()

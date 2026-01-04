@@ -3,12 +3,12 @@ using UnityEngine;
 public class CoinPickup : MonoBehaviour
 {
     public  int coinCount;
-    public AudioSource CoinSound;
+    // public AudioSource CoinSound;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Coin"))
         {
-            CoinSound.Play();
+            // CoinSound.Play();
             other.gameObject.SetActive(false);
             coinCount+=100;
         }

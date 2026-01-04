@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpikeCollision : MonoBehaviour
 {
-    public AudioSource explosionSound;
+    // public AudioSource explosionSound;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Spike"))
         {
-            explosionSound.Play();
+            // explosionSound.Play();
             transform.position = Vector3.zero;
         }
     }
