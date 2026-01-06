@@ -3,8 +3,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody PlayerRB;
-    public Transform body;
-    public Transform wheels;
     bool isGrounded=false;
     public float jumpForce = 7f;
     public float playerMovementSpeed = 5f;
