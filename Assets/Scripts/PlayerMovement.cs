@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 7f;
     public float playerMovementSpeed = 5f;
     public float speed=5f;
+    private float maxSpeed = 200f;
+    private float maxHorizontalSpeed=20f;
 
     public float acceleration=0.01f;
     
@@ -55,7 +57,11 @@ public class PlayerMovement : MonoBehaviour
      }
      void Accelerate()
         {
-            speed +=acceleration*Time.deltaTime;
+            if (speed<maxSpeed){
+            speed +=acceleration*Time.deltaTime;}
+            if(playerMovementSpeed<maxHorizontalSpeed){
+            playerMovementSpeed +=acceleration*Time.deltaTime;
+            }
             Vector3 forwardMovement = transform.forward *speed;
            PlayerRB.velocity = new Vector3 (forwardMovement.x, PlayerRB.velocity.y,forwardMovement.z);  
         }   
