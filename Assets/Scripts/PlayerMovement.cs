@@ -5,12 +5,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody PlayerRB;
     bool isGrounded=false;
     public float jumpForce = 7f;
-    public float playerMovementSpeed = 5f;
-    public float speed=5f;
+    public float playerMovementSpeed = 10f;
+    public float speed=15f;
     private float maxSpeed = 200f;
     private float maxHorizontalSpeed=20f;
 
     public float acceleration=0.01f;
+    public float horizontalAcceleration = 0.001f;
     
     void Start()
     {
@@ -60,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             if (speed<maxSpeed){
             speed +=acceleration*Time.deltaTime;}
             if(playerMovementSpeed<maxHorizontalSpeed){
-            playerMovementSpeed +=acceleration*Time.deltaTime;
+            playerMovementSpeed +=horizontalAcceleration*Time.deltaTime;
             }
             Vector3 forwardMovement = transform.forward *speed;
            PlayerRB.velocity = new Vector3 (forwardMovement.x, PlayerRB.velocity.y,forwardMovement.z);  

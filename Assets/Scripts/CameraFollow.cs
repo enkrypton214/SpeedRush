@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
     
     Vector3 offset;
     public Transform player;
+    public CameraSpinScript CameraPivot;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position=player.position-offset;
+        if(CameraPivot.gameStarted == true){
+        transform.position=player.position-offset+new Vector3 (0,3,-14);}
     }
 }
